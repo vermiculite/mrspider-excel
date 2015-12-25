@@ -1,0 +1,19 @@
+{
+  "name": "mrspider-excel",
+  "version": "0.0.1",
+  "description": "mrspider middleware to store results in an excel spreadsheet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/_mocha --ui bdd --reporter spec --recursive test"
+  },
+  "author": "Sean Hayes <seanowenhayes@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
+  },
+  "dependencies": {
+    "msexcel-builder": "0.0.2"
+  }
+}
