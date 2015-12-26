@@ -34,7 +34,7 @@ describe('mrspider excel', function () {
         }).should.throw(Error);
     });
 
-    it('should throw an error if no saveFile is given in the options.', function() {
+    it('should throw an error if no saveFile is given in the options.', function () {
         delete validOptions.saveFile;
         (function () {
             var excel = mrspiderExcel(validOptions);
@@ -47,12 +47,17 @@ describe('mrspider excel', function () {
         excel(validPage, validSpider, done);
     });
 
-    describe('XMLWriter#appendData', function() {
-        var fakeMsExcelBuilder = {
-            createWorkbook: sinon.spy()
-        };
-        var xmlWriter = new XMLWriter(fakeMsExcelBuilder, validOptions);
+    describe('XMLWriter#appendData', function () {
 
+        it('should setup the ', function () {
+            var fakeMsExcelBuilder = {
+                createWorkbook: sinon.spy()
+            };
+            var xmlWriter = new XMLWriter(fakeMsExcelBuilder, validOptions);
+            fakeMsExcelBuilder.createWorkbook.called.should.equal(true);
+            fakeMsExcelBuilder.createWorkbook.firstCall.args[0].should.equal('.');
+            fakeMsExcelBuilder.createWorkbook.firstCall.args[1].should.equal('example.xls');
+        });
 
     });
 });
