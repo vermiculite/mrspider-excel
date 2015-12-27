@@ -49,14 +49,32 @@ describe('mrspider excel', function () {
 
     describe('XMLWriter#appendData', function () {
 
-        it('should setup the ', function () {
+        it('should setup the writer with saveFile and savePath', function () {
+            var stub = sinon.stub();
+            var workbookSpy = {
+                createSheet: sinon.spy()
+            };
+            stub.returns(workbookSpy);
             var fakeMsExcelBuilder = {
-                createWorkbook: sinon.spy()
+                createWorkbook: stub
             };
             var xmlWriter = new XMLWriter(fakeMsExcelBuilder, validOptions);
             fakeMsExcelBuilder.createWorkbook.called.should.equal(true);
             fakeMsExcelBuilder.createWorkbook.firstCall.args[0].should.equal('.');
             fakeMsExcelBuilder.createWorkbook.firstCall.args[1].should.equal('example.xls');
+        });
+
+        it('should create a worksheet called sheet1', function () {
+            var stub = sinon.stub();
+            var workbookSpy = {
+                createSheet: sinon.spy()
+            };
+            stub.returns(workbookSpy);
+            var fakeMsExcelBuilder = {
+                createWorkbook: stub
+            };
+            var xmlWriter = new XMLWriter(fakeMsExcelBuilder, validOptions);
+            workbookSpy.createSheet.called.should.equal(true);
         });
 
     });

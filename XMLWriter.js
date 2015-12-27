@@ -8,6 +8,7 @@ class XMLWriter {
             throw new Error('A save file is required.');
         }
         this.workbook = excelBuilder.createWorkbook(options.savePath, options.saveFile);
+        this.sheet = this.workbook.createSheet();
         this.currentRow = 0;
     }
 
